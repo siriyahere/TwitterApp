@@ -1,7 +1,10 @@
 DemoProj::Application.routes.draw do
+  
+
  root :to => "pages#home"
   match '/contact', :to => 'pages#contact'
   match '/help', :to => 'pages#help'
+  get "users/new"
  #get "pages/home"
 
   #get  "pages/contact"

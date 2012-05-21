@@ -10,4 +10,8 @@ def title
 	end
 
 end
+def logo
+	image_tag("logo.jpeg", :alt => "Sample App", :class => "round" )
+end	
+
 end
