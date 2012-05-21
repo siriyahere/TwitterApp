@@ -47,5 +47,25 @@ end
     	response.should have_selector('title', :content => "Sign up")
      end
   end
+  describe "POST 'create' " do
+    describe "failure" do
+        before(:each) do
+          @attr= { :name => "", :email => "",:password=> "", :password_confirmation => ""}
 
+    end
+    it "shud hv the right title" do
+        post :create, :user => @attr
+        response.should have_selector('title' , :content=> "Sign up")
+    end
+      it "shud render the 'new' page" do
+        post :create, :user => @attr
+        response.should render_template('new')
+       end 
+        it "shud not create a user" do
+           lambda do
+            post:create, :user => @attr
+          end.should_not change(User, :count)
+        end 
+  end
+ end
 end
