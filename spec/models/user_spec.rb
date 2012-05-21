@@ -86,6 +86,34 @@ it "shud reject upto case" do
     	it "should have an encrypted pwd  attribute" do
     		@user.should respond_to(:encrypted_password)
 		end		
+		it "should set the encrypted pwd" do
+			@user.encrypted_password.should_not be_blank
+		end
+		it "should have a salt" do
+			@user.should respond_to(:salt)
+		end
+		describe "has_password?method " do
+			it "should exist" do
+				@user.should respond_to(:has_password?)
+			end
+			it "shud return true if pwd match" do
+				@user.has_password(@attr[:password]).should be_true
+			end	
 
-end
+		end
+		describe "authenticate method " do
+			it "shud exist " do
+				User.should respond_to(:authenticate)
+		end
+			it "shud return nil on email/pwd mismatch" do
+			User.authenticate(@attr[:email],"wrongpass").should be_nil
+			end
+			it "shud return nil for an email with no user" do
+			 User.authenticate("bar@foo.com",@attr[:password]).should be_nil 
+			end
+			it "shud return the user on match"	do
+			User.authenticate(@attr[:email],@attr[:password]).should == @user	
+			end
+		end
+	end
 end
