@@ -2,7 +2,7 @@
 	width: 710px;
 }
 body {
-	background: #c00;
+	background: #cdf;
 }
 header{
 	padding-top: 20px;
@@ -66,7 +66,7 @@ a.signup_button{
 	display: block;
 	text-align: center;
 	width:200px;
-	color: #fff;
+	color: #000;
 	background: #006400;
 	font-size: 150%;
 	font-weight: bold;
