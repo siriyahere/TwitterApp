@@ -9,9 +9,10 @@
         <td class="sidebar round">
         <strong>Name</strong>
         <%=@user.name%><br/>
-        <strong>URL</strong><%=link_to user_path(@user),@user%>
+        <strong>URL</strong><%=link_to user_path(@user.name),@user%>
            </td>
     </tr>
  </table>
 
- Email-id :<%= @user.email %>
+
+<!-- Email-id :<%= @user.email %>-->
