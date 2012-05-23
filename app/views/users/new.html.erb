@@ -1,7 +1,7 @@
 <title> Sign up </title>
 <h1>Sign up</h1>
 <%= form_for(@user) do |f| %>
-<%= render 'field' , :object => f.object %>
+<%= render 'field' , :f => f %>
 
 <div class ="actions">
 	<%=f.submit "Sign up"%>

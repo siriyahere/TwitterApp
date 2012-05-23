@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120522192945) do
+ActiveRecord::Schema.define(:version => 20120523124728) do
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(:version => 20120522192945) do
 
   add_index "microposts", ["user_id"], :name => "index_microposts_on_user_id"
 
+  create_table "slugs", :force => true do |t|
+    t.string   "name"
+    t.integer  "sluggable_id"
+    t.integer  "sequence",                     :default => 1, :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
+  add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -29,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120522192945) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.boolean  "admin",              :default => false
+    t.string   "cached_slug"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

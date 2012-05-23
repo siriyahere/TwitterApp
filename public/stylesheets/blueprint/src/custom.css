@@ -1,9 +1,14 @@
 .container {
 	width: 710px;
 }
-body {
-	background-color: green !important;
-}
+body{background-image: url('bg.jpeg') !important;
+		background-size:200% 200% !important;
+		background-repeat: no-repeat  !important;
+	}
+/*body {
+	
+	/*background-color: green !important;*
+}*/
 header{
 	padding-top: 20px;
 

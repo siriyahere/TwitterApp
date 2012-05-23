@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_friendly_id :name
   attr_accessor :password
   has_many :microposts, :dependent => :destroy
   attr_accessible  :name, :email ,:password ,:password_confirmation
@@ -15,7 +16,10 @@ class User < ActiveRecord::Base
    def has_password?(submitted_password)
    		encrypted_password == encrypt(submitted_password)
    end
-  
+  def feed
+      Micropost.where("user_id = ?", id)
+
+  end
   class << self 
   	
   
