@@ -1,8 +1,14 @@
 DemoProj::Application.routes.draw do
   
   get "sessions/new"
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+end
+#resources :relationships, :only => []
 
-  resources :users
    resources :sessions, :only => [:new, :create, :destroy]
    resources :microposts, :only => [:create, :destroy]
  root :to => "pages#home"
