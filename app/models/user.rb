@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :password
+ # extend FriendlyId
   has_many :microposts,   :dependent => :destroy
   has_many :relationships,:dependent => :destroy,
                           :foreign_key => "follower_id"
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :following, :through => :relationships, :source => :followed
   has_many :followers, :through => :reverse_relationships, :source => :follower
   attr_accessible  :name, :email ,:password ,:password_confirmation
-  has_friendly_id :name
+  #friendly_id :name
   email_regex= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name ,:presence => true, :length => {:maximum => 50 }
   validates :email ,:presence => true , :uniqueness => { :case_sensitive => false },

@@ -4,13 +4,17 @@ DemoProj::Application.routes.draw do
   
   resources :users do
     member do
+      
       get :following, :followers
-    end
-end
-#resources :relationships, :only => []
+  
+      end
+  end
+
+resources :relationships, :only => [:create, :destroy]
 
    resources :sessions, :only => [:new, :create, :destroy]
    resources :microposts, :only => [:create, :destroy]
+ 
  root :to => "pages#home"
   match '/contact', :to => 'pages#contact'
   match '/help', :to => 'pages#help'
