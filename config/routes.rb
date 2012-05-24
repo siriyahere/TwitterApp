@@ -1,5 +1,7 @@
 DemoProj::Application.routes.draw do
   
+  get "retweets/retweet"
+
   get "sessions/new"
   
   resources :users do
@@ -9,11 +11,20 @@ DemoProj::Application.routes.draw do
   
       end
   end
-
+=begin
+  resources :microposts do
+    member do
+      
+      get :retweet
+  
+      end
+  end
+=end
 resources :relationships, :only => [:create, :destroy]
 
    resources :sessions, :only => [:new, :create, :destroy]
-   resources :microposts, :only => [:create, :destroy]
+   resources :microposts, :only => [:create, :destroy,:retweet]
+   resources :retweets 
  
  root :to => "pages#home"
   match '/contact', :to => 'pages#contact'
@@ -21,6 +32,7 @@ resources :relationships, :only => [:create, :destroy]
   match '/signup',  :to => 'users#new'
   match '/signin', :to => 'sessions#new'
   match '/signout', :to => 'sessions#destroy'
+  match '/retweet', :to => 'retweets#retweet'
  #get "pages/home"
 
   #get  "pages/contact"

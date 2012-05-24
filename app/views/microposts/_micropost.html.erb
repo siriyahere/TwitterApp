@@ -2,11 +2,32 @@
 <td class ="micropost">
  <span class= "content"> <%= micropost.content %></span>
  <span class= "timestamp">
+
+ 	<% user = micropost.user rescue User.find(micropost.user_id) %>
+ 	<% if (user.id == micropost.auth_id ) %>
 Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+<% else %>
+ Retweeted <%= time_ago_in_words(micropost.created_at) %>ago.
+<% end %>
 </span>
-<%user = micropost.user rescue User.find(micropost.user_id) %>
+
+
+
+<%= form_for(micropost, :url => retweet_path) do |f|%>
+
+<div class= "field">
+	
+	<%= f.hidden_field :id, :value => micropost.id %>
+</div>
+
+
+
+
+<%= f.submit "retweet"  %>
+<% end %>
 <% if current_user?(micropost.user) %>
 <td>
+	
 <%= link_to "delete", micropost, :method => :delete,
 :confirm => "You sure?",
 :title => micropost.content %>

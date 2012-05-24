@@ -10,6 +10,10 @@ class MicropostsController < ApplicationController
 			render 'pages/home'
 			end 
 		end
+
+  	
+
+		
 		def destroy
 			@micropost.destroy
 			redirect_to root_path, :flash => {:success => "Micropost Deleted!!"}

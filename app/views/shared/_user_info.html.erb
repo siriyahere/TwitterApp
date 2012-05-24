@@ -4,6 +4,10 @@
  <span class ="user name">
 <%= current_user.name %>
 </span>
+
+<span class ="about">
+	<h1> <%= current_user.description||= "yet to complete profile" %> </h1>
+</span>
 <br/>
 <span class="microposts">
 <%= pluralize(current_user.microposts.count, "micropost") %>

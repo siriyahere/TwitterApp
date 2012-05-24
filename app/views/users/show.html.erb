@@ -1,9 +1,12 @@
 <table class ="profile" summary="Profile information">
+        
 	<tr>
 		<td class="main">
+                        <p>
 			<h1> 
  				<%= gravatar_for @user %>
  				<%= @user.name %></h1>
+                                <%= @user.description %></p>
                 <%= render 'follow_form' if signed_in? %> 
                 <% if @user.microposts.any? %>
 <table class="microposts" summary="User microposts">
@@ -13,11 +16,17 @@
 <% end %>
 
 
+
+
+
         </td>
         <td class="sidebar round">
         <strong>Name</strong>
         <%=@user.name%><br/>
         <strong>URL</strong><%=link_to user_path(@user.name),@user%><br/>
+        <strong>
+        <%= @user.description %>
+        </strong><br/>
         <strong>Microposts</strong>
         <%=@user.microposts.count %>
         <%= render 'shared/stats' %>

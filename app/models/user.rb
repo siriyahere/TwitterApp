@@ -1,17 +1,19 @@
 class User < ActiveRecord::Base
   attr_accessor :password
- # extend FriendlyId
+ #extend FriendlyId
+  # friendly_id :name, use: [:slugged, :history]
   has_many :microposts,   :dependent => :destroy
   has_many :relationships,:dependent => :destroy,
                           :foreign_key => "follower_id"
+  has_many :retweets,   :dependent => :destroy                        
    has_many :reverse_relationships,
                           :foreign_key => "followed_id",
                           :class_name => "Relationship" ,
                           :dependent => :destroy         
   has_many :following, :through => :relationships, :source => :followed
   has_many :followers, :through => :reverse_relationships, :source => :follower
-  attr_accessible  :name, :email ,:password ,:password_confirmation
-  #friendly_id :name
+  attr_accessible  :name, :email ,:password ,:password_confirmation , :description
+ 
   email_regex= /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name ,:presence => true, :length => {:maximum => 50 }
   validates :email ,:presence => true , :uniqueness => { :case_sensitive => false },
@@ -30,9 +32,9 @@ class User < ActiveRecord::Base
    end
   def feed
      # Micropost.where("user_id = ?", id)
-     Micropost.from_users_followed_by(self)
+     Micropost.from_users_followed_by(self) + Micropost.retweeted_from(self)
 
-  end
+ end
   def following?(followed)
       relationships.find_by_followed_id(followed)
   end 

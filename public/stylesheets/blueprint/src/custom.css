@@ -1,21 +1,33 @@
 .container {
 	width: 710px;
 }
+
 body{background-image: url('bg.jpeg') !important;
-		background-size:200% 200% !important;
-		background-repeat: no-repeat  !important;
-	}
+		/*background-size:100% 20% !important;*/
+		background-repeat:no-repeat   !important;
+	    background-color: #CCDDFF !important;
+	    
+/*	background-attachment: fixed !important;
+    background-color: #C0DEED !important;
+    background-position: left 40px !important;
+    background-repeat: no-repeat !important;
+*/	}
 /*body {
 	
 	/*background-color: green !important;*
 }*/
+p{
+	font-family: "Helvetica Neue",Arial,Helvetica,sans-serif !important;
+	    font-size: 200% !important;
+}
 header{
+	
 	padding-top: 20px;
 
 }
 header img{
-	padding: 1em;
-	background: #cc0;
+	padding: 0.8em;
+	/*background: #000;*/
 	
 }
 section {
@@ -23,11 +35,18 @@ section {
 	font-size: 120%;
 	padding: 20px;
 	background: #fff;
+	font-color :#0EBFE9 !important ;
 }
 section h1{
 	font_size:200%;
+	
+	/*font: 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+*/
 }
 /* Links */
+h1{
+	color :#0EBFE9 !important ;
+}
 a{
 	color: #09c;
 	text-decoration: none;
@@ -71,8 +90,8 @@ a.signup_button{
 	display: block;
 	text-align: center;
 	width:200px;
-	color: #000;
-	background: #006400;
+	color: #FFF;
+	background: #000000;
 	font-size: 150%;
 	font-weight: bold;
 	padding: 20px;
@@ -83,17 +102,19 @@ a.signup_button{
 -webkit-border-radius: 10px;
 border-radius:
 10px;
+/*background-color :#CCDD00 ;*/
 }
 
 footer {
 text-align: center;
 margin-top: 10px;
-width: 710px;
-margin-left: auto;
-margin-right: auto;
+width: 950px;
+margin-left: 500px;
+margin-right: 100px;
+
 }
 footer nav {
-float: none;
+float: right;
 }
 /*Show page*/
 table.profile {
@@ -201,5 +222,10 @@ margin-bottom: 2em;
 form.new_micropost textarea {
 height: 4em;
 margin-bottom: 0;
+}
+h1.deco
+{
+	font: 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+
 }
 
